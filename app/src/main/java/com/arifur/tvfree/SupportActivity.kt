@@ -10,6 +10,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import java.util.UUID
 
 class SupportActivity : AppCompatActivity() {
@@ -38,9 +41,9 @@ class SupportActivity : AppCompatActivity() {
                     val email = snapshot.child("email").value?.toString() ?: ""
                     val phone = snapshot.child("phone").value?.toString() ?: ""
 
-                    tvDevName.text = "Developer: $name"
-                    tvDevEmail.text = "Email: $email"
-                    tvDevPhone.text = "Phone: $phone"
+                    tvDevName.text = getString(R.string.dev_name_format, name)
+                    tvDevEmail.text = getString(R.string.dev_email_format, email)
+                    tvDevPhone.text = getString(R.string.dev_phone_format, phone)
                 }
             }
 
@@ -72,5 +75,18 @@ class SupportActivity : AppCompatActivity() {
                 Toast.makeText(this, "দয়া করে আপনার সমস্যার কথা লিখুন", Toast.LENGTH_SHORT).show()
             }
         }
+
+        // ন্যাভিগেশন বার হাইড করার জন্য কোড
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        // সোয়াইপ করলে যেন ন্যাভিগেশন বার কিছুক্ষণের জন্য দেখা যায় এবং আবার হাইড হয়ে যায়
+        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+
+        // শুধু ন্যাভিগেশন বার (নিচের অংশ) হাইড করতে চাইলে:
+        windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
+
+        // বিঃদ্রঃ আপনি যদি উপরের স্ট্যাটাস বার (যেখানে চার্জ, সময় দেখায়) সহ সবকিছু হাইড করে ফুল-স্ক্রিন করতে চান,
+        // তবে উপরের লাইনের বদলে নিচের লাইনটি ব্যবহার করবেন:
+        // windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
     }
 }

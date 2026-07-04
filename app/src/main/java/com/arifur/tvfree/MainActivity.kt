@@ -1,10 +1,10 @@
 package com.arifur.tvfree // আপনার আসল প্যাকেজ নামটিই রাখবেন
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -20,6 +20,9 @@ import androidx.media3.ui.PlayerView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import android.content.Intent
+import android.content.res.Configuration
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,6 +58,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // ন্যাভিগেশন বার হাইড করার জন্য কোড
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        // সোয়াইপ করলে যেন ন্যাভিগেশন বার কিছুক্ষণের জন্য দেখা যায় এবং আবার হাইড হয়ে যায়
+        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+
+        // শুধু ন্যাভিগেশন বার (নিচের অংশ) হাইড করতে চাইলে:
+        // windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
+
+        // বিঃদ্রঃ আপনি যদি উপরের স্ট্যাটাস বার (যেখানে চার্জ, সময় দেখায়) সহ সবকিছু হাইড করে ফুল-স্ক্রিন করতে চান,
+        // তবে উপরের লাইনের বদলে নিচের লাইনটি ব্যবহার করবেন:
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+
         // 📱 ফোনের ব্যাক বোতাম (Back Button) হ্যান্ডেল করার লজিক
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -71,13 +87,33 @@ class MainActivity : AppCompatActivity() {
         })
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
-        channelAdapter = ChannelAdapter(channelList) { channel ->
+        channelAdapter = ChannelAdapter(emptyList()) { channel ->
             playVideo(channel.url)
         }
         recyclerView.adapter = channelAdapter
 
         fetchChannelsFromFirebase()
         setupSearch()
+        val btnOpenSupport = findViewById<Button>(R.id.btnOpenSupport)
+        btnOpenSupport.setOnClickListener {
+            val intent = Intent(this, SupportActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        // সাপোর্ট বাটনটি খুঁজে বের করা
+        val btnOpenSupport = findViewById<View>(R.id.btnOpenSupport)
+
+        // ফোন ল্যান্ডস্কেপ (আড়াআড়ি/ফুল স্ক্রিন) মোডে গেলে বাটন হাইড হয়ে যাবে
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            btnOpenSupport?.visibility = View.GONE
+        }
+        // ফোন আবার পোর্ট্রেট (সোজা) মোডে আসলে বাটন দেখা যাবে
+        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            btnOpenSupport?.visibility = View.VISIBLE
+        }
     }
 
     private fun fetchChannelsFromFirebase() {
@@ -87,17 +123,17 @@ class MainActivity : AppCompatActivity() {
                 return@addSnapshotListener
             }
             if (snapshot != null) {
+                val newChannels = snapshot.documents.mapNotNull { it.toObject(Channel::class.java) }
+                
+                // মাস্টার লিস্ট আপডেট করা হচ্ছে সার্চের জন্য
                 channelList.clear()
-                for (document in snapshot.documents) {
-                    val channel = document.toObject(Channel::class.java)
-                    if (channel != null) {
-                        channelList.add(channel)
-                    }
-                }
-                channelAdapter.notifyDataSetChanged()
+                channelList.addAll(newChannels)
+                
+                // এডাপ্টার আপডেট করা হচ্ছে (DiffUtil ব্যবহার করবে)
+                channelAdapter.updateList(newChannels)
 
-                if (channelList.isNotEmpty()) {
-                    playVideo(channelList[0].url)
+                if (newChannels.isNotEmpty() && player.mediaItemCount == 0) {
+                    playVideo(newChannels[0].url)
                 }
             }
         }
@@ -131,7 +167,6 @@ class MainActivity : AppCompatActivity() {
     // ফুলস্ক্রিন চালু করার ফাংশন
     private fun enterFullScreen() {
         isPlayerFullScreen = true
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         searchChannel.visibility = View.GONE
         recyclerView.visibility = View.GONE
 
@@ -151,7 +186,6 @@ class MainActivity : AppCompatActivity() {
     // ফুলস্ক্রিন থেকে বের হওয়ার ফাংশন
     private fun exitFullScreen() {
         isPlayerFullScreen = false
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         searchChannel.visibility = View.VISIBLE
         recyclerView.visibility = View.VISIBLE
 

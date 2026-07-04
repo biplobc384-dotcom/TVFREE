@@ -20,7 +20,7 @@
     <EditText
         android:id="@+id/searchChannel"
         android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_margin="12dp"
         android:background="@color/surface_dark"
         android:hint="@string/search_hint"
@@ -32,6 +32,7 @@
         android:maxLines="1"
         android:inputType="text"
         android:importantForAutofill="no"
+        app:layout_constraintWidth_max="488dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/playerView" />
@@ -43,10 +44,21 @@
         android:layout_marginTop="10dp"
         android:clipToPadding="false"
         android:paddingBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnOpenSupport"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchChannel"
         tools:listitem="@layout/item_channel" />
+    <Button
+        android:id="@+id/btnOpenSupport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/support_contact_admin"
+        android:backgroundTint="#FF0000"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

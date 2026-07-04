@@ -1,65 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:fillViewport="true">
 
-    <!-- ডেভেলপার ইনফরমেশন দেখানোর জন্য -->
-    <TextView
-        android:id="@+id/tvDevName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Developer Name"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/tvDevEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Email: "
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvDevName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Developer Name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvDevPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Phone: "
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvDevEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Email: "
+            android:textSize="16sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="#CCCCCC" />
+        <TextView
+            android:id="@+id/tvDevPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Phone: "
+            android:textSize="16sp" />
 
-    <!-- ইউজারের মেসেজ লেখার জন্য -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="আপনার সমস্যাটি লিখুন:"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#CCCCCC" />
 
-    <EditText
-        android:id="@+id/etUserMessage"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        android:background="#EEEEEE"
-        android:gravity="top|start"
-        android:hint="এখানে বিস্তারিত লিখুন..."
-        android:padding="10dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="আপনার সমস্যাটি লিখুন:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="মেসেজ পাঠান" />
+        <EditText
+            android:id="@+id/etUserMessage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:background="#EEEEEE"
+            android:gravity="top|start"
+            android:hint="এখানে বিস্তারিত লিখুন..."
+            android:padding="10dp" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:text="মেসেজ পাঠান" />
+
+    </LinearLayout>
+</ScrollView>

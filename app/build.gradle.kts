@@ -38,6 +38,9 @@ android {
 
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
+    // Firebase BoM (বাকি সব ফায়ারবেস লাইব্রেরির ভার্সন কন্ট্রোল করার জন্য)
+    implementation(platform(libs.firebase.bom))
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
@@ -48,21 +51,20 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
+
     // Firebase Cloud Firestore
-    implementation("com.google.firebase:firebase-firestore-ktx:24.10.0")
+    implementation(libs.firebase.firestore)
+    // Firebase Realtime Database
+    implementation(libs.firebase.database)
 
     // ExoPlayer (লাইভ m3u8 স্ট্রিম চালানোর জন্য)
-    implementation("androidx.media3:media3-exoplayer:1.2.0")
-    implementation("androidx.media3:media3-exoplayer-hls:1.2.0")
-    implementation("androidx.media3:media3-ui:1.2.0")
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.exoplayer.hls)
+    implementation(libs.media3.ui)
 
     // Coil (নেটওয়ার্ক থেকে চ্যানেলের লোগো লোড করার জন্য)
-    implementation("io.coil-kt:coil:2.5.0")
-    // Firebase BoM (বাকি সব ফায়ারবেস লাইব্রেরির ভার্সন কন্ট্রোল করার জন্য)
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0")) // লেটেস্ট ভার্সন ব্যবহার করতে পারেন
+    implementation(libs.coil)
 
-    // Firebase Realtime Database
-    implementation("com.google.firebase:firebase-database")
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

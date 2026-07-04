@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">TV FREE</string>
     <string name="search_hint">Search channel&#8230;</string>
+    <string name="dev_name_format">Developer: %1$s</string>
+    <string name="dev_email_format">Email: %1$s</string>
+    <string name="dev_phone_format">Phone: %1$s</string>
+    <string name="developer_name_label">Developer Name</string>
+    <string name="email_label">Email: </string>
+    <string name="phone_label">Phone: </string>
+    <string name="write_problem_label">আপনার সমস্যাটি লিখুন:</string>
+    <string name="write_details_hint">এখানে বিস্তারিত লিখুন&#8230;</string>
+    <string name="send_message_button">মেসেজ পাঠান</string>
+    <string name="support_contact_admin">Support / Contact Admin</string>
 </resources>

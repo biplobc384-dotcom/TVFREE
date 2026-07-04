@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 
@@ -42,9 +43,27 @@ class ChannelAdapter(
 
     override fun getItemCount(): Int = channelList.size
 
-    // সার্চ করার সময় লিস্ট আপডেট করার ফাংশন
+    // DiffUtil Callback
+    class ChannelDiffCallback(
+        private val oldList: List<Channel>,
+        private val newList: List<Channel>
+    ) : DiffUtil.Callback() {
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].url == newList[newItemPosition].url
+        }
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+    }
+
+    // সার্চ করার সময় বা ফায়ারবেস থেকে ডাটা আসার সময় লিস্ট আপডেট করার ফাংশন
     fun updateList(newList: List<Channel>) {
+        val diffCallback = ChannelDiffCallback(channelList, newList)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        
         channelList = newList
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 }
