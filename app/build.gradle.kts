@@ -58,6 +58,11 @@ dependencies {
 
     // Coil (নেটওয়ার্ক থেকে চ্যানেলের লোগো লোড করার জন্য)
     implementation("io.coil-kt:coil:2.5.0")
+    // Firebase BoM (বাকি সব ফায়ারবেস লাইব্রেরির ভার্সন কন্ট্রোল করার জন্য)
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0")) // লেটেস্ট ভার্সন ব্যবহার করতে পারেন
+
+    // Firebase Realtime Database
+    implementation("com.google.firebase:firebase-database")
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
