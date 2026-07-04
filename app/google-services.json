@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1939711278",
+    "project_id": "arifur-live-tv",
+    "storage_bucket": "arifur-live-tv.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1939711278:android:b9b14cb9d818ff5b0cc6bf",
+        "android_client_info": {
+          "package_name": "com.arifur.tvfree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmwi_IcUxV_PbEhKfkFcpeKjkIvwD46qk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
