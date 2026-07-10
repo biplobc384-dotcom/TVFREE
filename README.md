@@ -9,7 +9,7 @@
 | প্ল্যাটফর্ম | ডাউনলোড |
 |:---:|:---:|
 | **GitHub Releases** | [সর্বশেষ সংস্করণ ডাউনলোড করুন](https://github.com/biplobc384-dotcom/TVFREE/releases) |
-
+| **DIRECKT LINK** | [সর্বশেষ সংস্করণ ডাউনলোড করুন](https://release-assets.githubusercontent.com/github-production-release-asset/1289009685/35a05b15-2c75-4d64-83f0-4022e09cc0f6?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-07-10T14%3A57%3A10Z&rscd=attachment%3B+filename%3DTV.FREE.apk&rsct=application%2Fvnd.android.package-archive&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-07-10T13%3A56%3A12Z&ske=2026-07-10T14%3A57%3A10Z&sks=b&skv=2018-11-09&sig=%2FXpC7R%2BxENmVc%2FlHPjR6K%2F96ByBIMmmyPzETrBVYzw0%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4MzY5NDkyNywibmJmIjoxNzgzNjkzMTI3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.-tWY0EIzaSOrhGjgAuQ1Rmqdyk4EUbZCfNjY2ieJbP4&response-content-disposition=attachment%3B%20filename%3DTV.FREE.apk&response-content-type=application%2Fvnd.android.package-archive) |
 > **প্রয়োজনীয়তা:** Android 5.0 (API 21) বা তার উপরে
 
 ---
