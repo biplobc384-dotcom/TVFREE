@@ -8,9 +8,7 @@
 
 | প্ল্যাটফর্ম | ডাউনলোড |
 |:---:|:---:|
-| **Google Play Store** | [এখানে ডাউনলোড করুন](#) |
 | **GitHub Releases** | [সর্বশেষ সংস্করণ ডাউনলোড করুন](https://github.com/biplobc384-dotcom/TVFREE/releases) |
-| **APK সরাসরি** | [Direct APK Download](#) |
 
 > **প্রয়োজনীয়তা:** Android 5.0 (API 21) বা তার উপরে
 
@@ -186,9 +184,9 @@ cd TVFREE
 
 ## 👤 ডেভেলপার
 
-**Biplab Chandra Roy**
+**ARIFUR JAMAN**
 - GitHub: [@biplobc384-dotcom](https://github.com/biplobc384-dotcom)
-- Email: [আপনার ইমেইল]
+- Email: arifurjjaman511@gmail.com
 
 ---
 
@@ -197,7 +195,8 @@ cd TVFREE
 যেকোনো সমস্যা বা পরামর্শের জন্য:
 
 - **GitHub Issues:** [Issue তৈরি করুন](https://github.com/biplobc384-dotcom/TVFREE/issues)
-- **Email:** contact@example.com
+- **Email:** arifurjjaman511@gmail.com
+- **Phone:** 01799517156
 - **ইন-অ্যাপ সাপোর্ট:** অ্যাপের সেটিংস মেনু থেকে সাপোর্ট অপশন ব্যবহার করুন
 
 ---
